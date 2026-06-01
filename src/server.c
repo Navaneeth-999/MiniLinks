@@ -279,7 +279,12 @@ int main(void) {
 
     mg_mgr_init(&mgr);
 
-    mg_http_listen(&mgr, "http://0.0.0.0:8000", fn, NULL);
+    const char *port = getenv("PORT");
+char addr[100];
+
+sprintf(addr, "http://0.0.0.0:%s", port ? port : "8000");
+
+mg_http_listen(&mgr, addr, fn, NULL);
 
     printf("Server running on http://localhost:8000\n");
 
