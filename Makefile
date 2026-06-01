@@ -1,2 +1,2 @@
 all:
-	gcc server.c -o server
+	gcc src/server.c src/mongoose.c -o server -O2
